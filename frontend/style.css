@@ -1,0 +1,1099 @@
+* {
+    font-family: 'Poppins', san-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color:#ebe8e2;
+}
+
+/* navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 95px;
+    width: 100%;
+    background-color:#C08261;
+    border-bottom: 2px solid rgba(0,0,0,0.1);
+    padding: 0 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0.1px 0.1px 50px rgba(0, 0, 0, 0.25);
+}
+
+.logo {
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.white {
+    color:#ECE3CE ;
+}
+
+.green {
+    color:#273826;
+    font-weight: 700;
+}
+
+.nav-items {
+    align-self: center;
+}
+
+
+.nav-items ul{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 1.5rem;
+    margin: 0;
+}
+
+.nav-items a {
+    text-decoration: none;
+    font-size: 1.35rem;
+    color:#ECE3CE;
+    font-weight: 500;
+}
+
+.nav-items a:hover {
+    color:#3A4D39;
+    text-decoration: underline;
+}
+
+/* === Cart Icon in Navbar === */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem; /* space between cart and login */
+}
+
+/* Cart styles */
+.cart {
+  position: relative;
+  font-size: 1.5rem;
+  color: #ECE3CE;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cart:hover {
+  color:#212121;
+}
+
+#cart-count {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: #525352;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 2px 6px;
+}
+
+.login {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: none;
+    color: #2e2e2d;
+    background-color:#C08261;
+    font-size: 1.6rem;
+    font-weight: 600;
+    display: flex;               /* make it flexbox */
+    align-items: center;         /* vertical center */
+    justify-content: center;     /* horizontal center */
+    cursor: pointer;             /* pointer effect */
+}
+
+.login:hover {
+    background-color:#ECE3CE;
+    color: #C08261;
+}
+
+
+/* Dropdown container */
+.nav-items ul li.dropdown {
+    position: relative;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    display: none; /* hidden by default */
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    list-style: none;
+    padding: 0;
+    min-width: 200px;
+    z-index: 1000;
+    flex-direction: column; /* stack vertically */
+}
+
+/* Show dropdown when active */
+.dropdown.open .dropdown-menu {
+    display: flex; /* show only when toggled */
+}
+
+/* Dropdown items */
+.dropdown-menu li {
+    padding: 10px 16px;
+}
+
+.dropdown-menu li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    font-size: 14px;
+}
+
+.dropdown-menu li a:hover {
+    background: #f0f0f0;
+    color: #008000; /* green highlight */
+}
+
+
+
+/* content-part */
+/* Reduce space between Slider and Cards */
+.main-content {
+    padding-top: 70px; /* Adjust this number (e.g., 0px or 10px) to decrease space */
+    margin-top: 0;     /* Ensures no extra margin is pushing it down */
+}
+
+/* Q2 FIX: Ensure horizontal alignment for the main category links */
+.user-type {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    align-items: center;
+    border-radius: 1rem;
+    width: 100%;          /* ✅ responsive */
+    max-width: 350px;     /* ✅ keeps your design */
+    height: 100%;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.50);
+    background: linear-gradient(135deg, #fdfcfb, #f5f5f5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.card img {
+    height: 250px;
+    width: 100%;
+    border-radius: 0.8rem;
+    object-fit: cover;
+}
+
+/* Shop Now Button Styling */
+.btn-green {
+    background-color: #C08261;  /* Terracotta Background initially */
+    color: #ECE3CE;             /* Cream Text initially */
+    border: 2px solid #C08261;  /* Terracotta Border */
+    border-radius: 25px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-green:hover {
+    background-color: #ECE3CE;  /* Turns Cream on hover */
+    color: #C08261;             /* Text turns Terracotta */
+    border: 2px solid #C08261;  /* Border stays Terracotta */
+}
+
+/* Re-sell Button Styling */
+.btn-green-outline {
+    background-color: #C08261;  /* Terracotta Background initially */
+    color: #ECE3CE;             /* Cream Text initially */
+    border: 2px solid #C08261;  /* Terracotta Border */
+    border-radius: 25px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+.btn-green-outline:hover {
+    background-color: #ECE3CE;  /* Turns Cream on hover */
+    color: #C08261;             /* Text turns Terracotta */
+    border: 2px solid #C08261;  /* Border stays Terracotta */
+}
+
+.card-head {
+    font-weight: 650;
+    color: #C08261;
+    margin-top: 20px;
+}
+
+.card-para {
+    font-size: 0.9rem;
+    padding: 10px;
+    text-align: center;
+}
+
+.user-type-btn {
+    margin-bottom: 30px;
+}
+
+.video-btn {
+    text-align: center;
+    margin-top: 3rem; /* Added some space above the button */
+}
+
+.video-btn .user-type-btn {
+    padding: 14px 28px; /* Increased padding for a larger button */
+    font-size: 1.1rem;  /* Slightly larger font */
+    font-weight: 600;
+}
+
+.video-btn .user-type-btn:hover {
+    background-color: #ECE3CE; /* beige */
+    color: #C08261; /* theme color */
+    border: 1px solid #C08261; /* Changed from green border */
+    padding: 13px 27px; /* Adjust padding to account for the new border */
+}
+
+.about-section {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 20px;
+}
+
+.about-head {
+    color: #C08261;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+.about-main {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    max-width: 900px; 
+    margin: 0 auto;   
+    background-color: #ECE3CE;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.about-img img {
+    height: 130px;
+    width: 130px;
+}
+
+/* Login Modal Styles */
+.login-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Updated to match C08261 with transparency */
+    background-color: rgba(192, 130, 97, 0.85); 
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.login-card {
+    background-color: #ECE3CE;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    text-align: center;
+}
+
+.login-card h3 {
+    color: #C08261;
+    margin-bottom: 20px;
+}
+
+.login-card input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.login-card button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background-color: #C08261;
+    color: #ECE3CE;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.login-card button:hover {
+    background-color: #A06B50; /* Slightly darker */
+}
+
+.login-card .close-btn {
+    background-color: transparent;
+    color: #C08261;
+    border: 1px solid #C08261; /* Updated from Green */
+}
+
+.login-card .close-btn:hover {
+    background-color: #C08261;
+    color: #ECE3CE;
+    border: 1px solid #C08261;
+}
+
+.login-card .error {
+    color: red;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+/* =========================================================
+   REGISTRATION PAGE STYLES (register.html)
+   ========================================================= */
+
+/* 1. Container: Centers the entire form on the screen */
+.registration-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-height: 100vh; /* Use full viewport height */
+    padding: 120px 20px 20px;
+    background-color: #ebe8e2; /* Matches body background */
+}
+
+/* 2. Form Card: Reuses the standard login modal card structure */
+.login-card {
+    /* These styles should already be defined in your main CSS but are included 
+       for context or if you separated them: */
+    background-color: #ECE3CE; /* Cream color */
+    padding: 30px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.login-card h3 {
+    color: #C08261; /* Theme heading */
+    margin-bottom: 25px;
+}
+
+/* 3. Input Styling (Inherited and fine-tuned) */
+#registerForm input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    outline: none;
+    font-size: 1rem;
+}
+
+/* 4. Button Styling */
+.login-card button.btn-green {
+    width: 100%;
+    margin-bottom: 10px;
+    /* Inherits colors from your main .btn-green: */
+    background-color: #C08261; 
+    color: #ECE3CE;
+    border: none;
+    padding: 12px;
+    border-radius: 25px;
+}
+
+.login-card button.btn-green:hover {
+    background-color: #A06B50;
+}
+
+/* 5. Error Message Area */
+#regError {
+    text-align: left; 
+    font-size: 0.9rem;
+    padding: 5px 0;
+    margin-bottom: 15px; /* Ensures space below the error message */
+}
+
+/* 6. "Login here" Link Styling */
+.login-card p {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.login-card p a {
+    color: #C08261; /* Link color */
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.login-card p a:hover {
+    text-decoration: underline;
+    color: #A06B50; 
+}
+
+/* Contact Us Modal Styles */
+.contact-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    background-color: rgba(112, 110, 109, 0.85); /* Updated to match theme with transparency */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.contact-card {
+    background-color: #C08261;
+    padding: 30px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.contact-card h2 {
+    color: #ECE3CE;
+    margin-bottom: 20px;
+}
+
+.contact-card input,
+.contact-card textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.contact-card input::placeholder,
+.contact-card textarea::placeholder {
+    color: #999;
+}
+
+.contact-card button {
+    width: 100%;
+    padding: 12px;
+    background-color: #C08261;
+    color: #ECE3CE;
+    border: 2px solid #ECE3CE; /* Added border for visibility on same color bg */
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-card button:hover {
+    background-color: #ECE3CE;
+    color: #C08261;
+}
+
+.contact-card .close-btn {
+    background-color: transparent;
+    color: #ECE3CE;
+    border: 1px solid #ECE3CE;
+}
+
+.contact-card .close-btn:hover {
+    background-color: #ECE3CE;
+    color: #C08261;
+}
+
+.contact-message {
+    color: #ECE3CE;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+/* Common Modal Background */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(192, 130, 97, 0.85); /* Updated transparency */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+/* Common Modal Card */
+.modal-card {
+    background-color: #ECE3CE;
+    padding: 30px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.modal-card h2 {
+    color: #C08261;
+    margin-bottom: 20px;
+}
+
+/* Form elements inside modal */
+.modal-card input,
+.modal-card textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 1rem;
+    outline: none;
+}
+
+/* Make textareas start at top-left */
+.modal-card textarea {
+    height: 100px;
+    text-align: left;
+    vertical-align: top;
+    padding-top: 12px;  /* ensures placeholder and text stay at the top */
+    resize: vertical;   /* allow only vertical resizing */
+}
+
+.modal-card button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background-color: #C08261;
+    color: #ECE3CE;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.modal-card button:hover {
+    background-color: #A06B50;
+}
+
+.modal-card button.close-btn {
+    background: #ccc;
+    color: black;
+}
+
+.modal-card .close-btn:hover {
+    background-color: #C08261;
+    color: #ECE3CE;
+    border: 1px solid #C08261;
+}
+
+.modal-message {
+    color: #C08261; /* Updated success message color */
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+/* footer */
+.site-footer {
+  background-color: #C08261; /* dark theme background */
+  color: #ECE3CE; /* light cream text */
+  padding: 40px 20px 20px;
+  margin-top: 50px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-section h3 {
+  color: #ECE3CE;
+  margin-bottom: 15px;
+}
+
+.footer-section p, 
+.footer-section a {
+  color: #ECE3CE;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  color: #2C2C2C; /* Darker hover */
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  color: #ECE3CE;
+}
+
+.footer-section ul li a:hover {
+  color: #2C2C2C;
+}
+
+/* Newsletter Form */
+#newsletterForm {
+  display: flex;
+  flex-direction: column;
+}
+
+#newsletterForm input {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 25px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  outline: none;
+}
+
+/* Newsletter Form Button Styles */
+/* Newsletter Form Button Styles */
+#newsletterForm button {
+    background-color: #ECE3CE;  /* Cream background initially */
+    color: #C08261;             /* Terracotta text */
+    border: 2px solid #FFFFFF;  /* WHITE BORDER */
+    border-radius: 25px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  #newsletterForm button:hover {
+    background-color: #C08261;  /* Turns Terracotta on hover */
+    color: #ECE3CE;             /* Text turns Cream */
+    border: 2px solid #FFFFFF;  /* Border stays White */
+  }
+
+#newsletterMsg {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #ECE3CE;
+}
+
+/* Social icons */
+.social-links a {
+  font-size: 1.5rem;
+  margin-right: 15px;
+  color: #ECE3CE;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #2C2C2C;
+}
+
+/* Footer bottom */
+.footer-bottom {
+  border-top: 1px solid rgba(236, 227, 206, 0.3);
+  margin-top: 20px;
+  padding-top: 15px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* =========================================================
+   SELLER DASHBOARD STYLES (seller-dashboard.html)
+   ========================================================= */
+
+.dashboard-container {
+    max-width: 600px;
+    margin: 150px auto 50px auto; 
+    padding: 40px;
+    border-radius: 20px;
+    background-color: #ECE3CE;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.dashboard-container h1 {
+    color: #C08261; /* Updated from Green */
+    margin-bottom: 5px;
+}
+
+.dashboard-container p {
+    color: #C08261; /* Updated from Green */
+    margin-bottom: 25px;
+}
+
+.product-form label {
+    display: block;
+    text-align: left;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #C08261; /* Updated from Green */
+}
+
+/* Styling for all form inputs and select element */
+.product-form input[type="text"], 
+.product-form input[type="number"], 
+.product-form textarea, 
+.product-form select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+}
+
+.product-form textarea {
+    resize: vertical;
+    min-height: 100px;
+    border-radius: 15px; 
+}
+
+/* Styling the "Add Item" button */
+.product-form button {
+    background-color: #C08261; /* Updated from Green */
+    color: #ECE3CE;
+    padding: 15px 20px;
+    margin-top: 30px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.product-form button:hover {
+     background-color: #A06B50; 
+}
+
+/* Styling for the new "Already a Seller? Log In" button */
+.btn-seller-shortcut {
+    background-color: #b0b0b0 !important; 
+    color: white !important;
+    border: none !important;
+    padding: 12px !important;
+    margin-top: 10px !important;
+    font-size: 1rem !important;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 25px;
+    margin-bottom: 5px !important; 
+}
+
+.btn-seller-shortcut:hover {
+    background-color: #888888 !important;
+}
+
+/* ================================
+   RESELL PAGE FIX (IMPORTANT)
+   ================================ */
+#resellerModal.login-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none; /* JS will change this to flex */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.resell-container {
+    margin-top: 120px;   /* MUST be > navbar height */
+    display: flex;
+    gap: 30px;
+    padding: 20px 40px;
+}
+
+.resell-main {
+    flex: 1;        /* fills remaining space */
+    width: 100%;
+}
+
+/* Re-sell filters sidebar */
+.filters {
+    width: 260px;
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 12px;
+    height: fit-content;
+}
+
+.filters h4 {
+    color: #3A4D39;
+    margin: 15px 0 8px;
+}
+
+.filters label {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+}
+
+#resellItems {
+    flex: 1;
+}
+
+.home {
+    text-decoration: none;
+    color: #273826;
+    font-size: 20px;
+}
+
+.home:hover {
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.resellerLogin {
+    font-size: 16px;
+}
+
+/* --- Slider / Carousel Styling --- */
+
+/* Controls the height and fit of the images */
+.banner-img {
+    height: 450px;           /* Standard Desktop Height */
+    object-fit: cover;       /* Ensures the image fills the box without stretching */
+    object-position: center; /* Keeps the focus in the middle */
+    filter: brightness(0.85); /* Slightly darkens image so white text is readable */
+}
+
+/* Styling for the text over the images */
+.carousel-caption h2 {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7); /* Adds black shadow behind text */
+}
+
+.carousel-caption p {
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+#heroCarousel {
+    margin-top: 80px; /* Change this number to increase/decrease space */
+}
+
+/* --- Mobile Responsiveness --- */
+/* This makes the slider smaller on phones so it looks like an App */
+@media (max-width: 768px) {
+    .banner-img {
+        height: 600px;           /* INC  REASED from 450px to 600px */
+        object-fit: cover;       /* Keeps image perfect, doesn't stretch */
+        object-position: center; 
+        filter: brightness(0.85);
+    }
+    
+    .carousel-caption h2 {
+        font-size: 1rem;     /* Smaller text */
+    }
+    
+    .carousel-caption p {
+        font-size: 0.8rem;
+        margin-bottom: 0;
+    }
+}
+/* =========================================
+   NAVBAR & RIGHT MENU FIX
+   ========================================= */
+
+/* 1. Fix Navbar Background and Positioning */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 95px;
+    width: 100%;
+    background-color: #C08261 !important; /* Forces the Terracotta color */
+    border-bottom: 2px solid rgba(0,0,0,0.1);
+    padding: 0 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* 2. Push page content down so it doesn't hide behind the navbar */
+body {
+    padding-top: 100px; 
+}
+
+/* 3. Fix the User Menu (Hides the ugly bullet points) */
+.user-menu-wrap {
+    position: relative;
+    margin-left: 15px;
+}
+
+.profile-dropdown {
+    display: none; /* THIS HIDES THE BULLET POINTS BY DEFAULT */
+    position: absolute;
+    top: 55px;
+    right: 0;
+    width: 250px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    border: 1px solid #ddd;
+    overflow: hidden;
+    z-index: 2000;
+}
+
+/* 4. Shows the menu only when clicked */
+.profile-dropdown.active {
+    display: block; 
+}
+
+/* 5. Style the Menu Header */
+.dropdown-header {
+    background-color: #C08261;
+    color: #ECE3CE;
+    padding: 15px;
+    text-align: center;
+}
+.dropdown-header p { margin: 0; font-weight: 600; font-size: 1rem; }
+.dropdown-header small { font-size: 0.85rem; opacity: 0.9; display: block; margin-top: 2px; }
+
+/* 6. Style the Menu Links */
+.profile-dropdown ul {
+    list-style: none !important; /* Removes bullets */
+    padding: 0;
+    margin: 0;
+}
+.profile-dropdown ul li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    color: #333 !important; /* Removes default blue link color */
+    text-decoration: none !important; /* Removes underline */
+    font-size: 0.95rem;
+    transition: background 0.2s;
+}
+.profile-dropdown ul li a:hover {
+    background-color: #f9f9f9;
+    color: #C08261 !important;
+}
+.profile-dropdown ul li a i {
+    color: #C08261;
+    width: 20px;
+    text-align: center;
+}
+/* === THE USER AVATAR / LOGIN ICON === */
+.login {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: none;
+    color: #ECE3CE;
+    background-color: transparent;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.login:hover {
+    color: #212121;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #ECE3CE; /* Cream Background */
+    color: #C08261;            /* Terracotta Text */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: 2px solid #ECE3CE;
+    transition: all 0.3s ease;
+}
+
+.user-avatar:hover {
+    background-color: #C08261;
+    color: #ECE3CE;
+    border-color: #ECE3CE;
+}
+
+/* Controls the height and fit of the slider images */
+.banner-img {
+    height: 600px;           /* INCREASED from 450px to 650px (or try 80vh for screen height) */
+    object-fit: cover;       /* Keeps the image from stretching ugly */
+    object-position: center; 
+    filter: brightness(0.85);
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .banner-img {
+        height: 500px;       /* Adjust phone height here if needed */
+        object-fit: cover;       
+        object-position: center; 
+        filter: brightness(0.85);
+    }
+    
+    .carousel-caption h2 {
+        font-size: 1.2rem;   
+    }
+    
+    .carousel-caption p {
+        font-size: 0.9rem;
+        margin-bottom: 0;
+    }
+}
+
+.contact-message {
+    font-size: 0.95rem;
+    text-align: center;
+    min-height: 25px; /* Keeps the card from jumping when text appears */
+    transition: all 0.3s ease;
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand2Heart - Secure Video</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: #202124; color: white; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+
+        .call-header {
+            padding: 15px 20px; background: #C08261; display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3); z-index: 10;
+        }
+        .logo { font-weight: bold; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
+
+        .video-grid {
+            flex-grow: 1; display: flex; justify-content: center; align-items: center;
+            gap: 20px; padding: 20px; position: relative;
+        }
+        
+        video {
+            border-radius: 12px; background: #000; object-fit: cover;
+            border: 2px solid #333; transition: 0.3s;
+        }
+
+        #userVideo { width: 100%; height: 100%; max-height: 80vh; max-width: 1000px; border-color: #C08261; }
+        
+        #myVideo { 
+            position: absolute; bottom: 30px; right: 30px; 
+            width: 200px; height: 150px; border: 2px solid white; z-index: 5;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            transform: scaleX(-1); 
+        }
+
+        .controls {
+            padding: 20px; background: #181818; display: flex; justify-content: center; gap: 15px;
+        }
+        .btn-control {
+            width: 50px; height: 50px; border-radius: 50%; border: none; font-size: 1.2rem; cursor: pointer; color: white;
+            transition: 0.2s; display: flex; align-items: center; justify-content: center;
+        }
+        
+        /* Invite Button Styles */
+        .btn-copy { background-color: #4285f4; width: auto; padding: 0 25px; border-radius: 25px; font-size: 0.95rem; font-weight: 600; gap: 8px;}
+        .btn-copy:hover { background-color: #3367d6; }
+        
+        /* Disabled State for Invite Button */
+        .btn-copy:disabled {
+            background-color: #198754; /* Green */
+            cursor: default;
+            opacity: 1;
+        }
+
+        .btn-mute { background-color: #3c4043; }
+        .btn-mute:hover { background-color: #5f6368; }
+        
+        .btn-end { background-color: #ea4335; }
+        .btn-end:hover { background-color: #d93025; }
+
+        @media (max-width: 768px) {
+            #userVideo { width: 100%; height: 60vh; }
+            #myVideo { width: 100px; height: 75px; bottom: 90px; right: 20px; }
+            .btn-copy span { display: none; } 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="call-header">
+        <div class="logo"><i class="fa-solid fa-hand-holding-heart"></i> Hand2Heart Support</div>
+        <div style="font-size: 0.85rem; opacity: 0.8; background: rgba(0,0,0,0.2); padding: 5px 10px; border-radius: 15px;">
+            <i class="fa-solid fa-lock"></i> End-to-End Encrypted
+        </div>
+    </div>
+
+    <div class="video-grid">
+        <video id="userVideo" autoplay playsinline></video>
+        <video id="myVideo" autoplay muted playsinline></video>
+    </div>
+
+    <div class="controls">
+        <button id="inviteBtn" class="btn-control btn-copy" onclick="copyRoomLink()" title="Copy Invite Link">
+            <i class="fa-solid fa-user-plus"></i> <span>Copy Invite Link</span>
+        </button>
+
+        <button class="btn-control btn-mute" onclick="toggleAudio()" title="Mute/Unmute">
+            <i id="audioIcon" class="fa-solid fa-microphone"></i>
+        </button>
+        <button class="btn-control btn-mute" onclick="toggleVideo()" title="Camera On/Off">
+            <i id="videoIcon" class="fa-solid fa-video"></i>
+        </button>
+        <button class="btn-control btn-end" onclick="endCall()" title="End Call">
+            <i class="fa-solid fa-phone-slash"></i>
+        </button>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+    <script src="video.js"></script>
+
+    <script>
+        // 1. UPDATED Copy Link Logic
+        function copyRoomLink() {
+            const link = window.location.href;
+            const btn = document.getElementById('inviteBtn'); // Select the button
+
+            navigator.clipboard.writeText(link).then(() => {
+                // A. Disable the button
+                btn.disabled = true;
+
+                // B. Change text and icon
+                btn.innerHTML = '<i class="fa-solid fa-check"></i> <span>Link Copied!</span>';
+                
+                // C. Show success message
+                alert("✅ Link Copied!\n\nPaste this link to your customer so they can join.");
+            }).catch(err => {
+                prompt("Copy this link manually:", link);
+            });
+        }
+
+        // 2. Hide "Invite" button if NOT Seller
+        document.addEventListener('DOMContentLoaded', () => {
+            const userJson = localStorage.getItem('user');
+            const user = userJson ? JSON.parse(userJson) : null;
+            const inviteBtn = document.getElementById('inviteBtn');
+
+            if (!user || (user.role !== 'seller' && user.role !== 'admin')) {
+                if(inviteBtn) inviteBtn.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

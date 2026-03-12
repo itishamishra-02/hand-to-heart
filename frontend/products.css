@@ -1,0 +1,538 @@
+/* frontend/products.css */
+/* === Saree Page Custom Styles (saree.css) === */
+
+/* --- GENERAL & UTILITY STYLES --- */
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.shop-body {
+  background-color: #ebe8e2; /* Light cream/beige background */
+  padding-top: 120px; /* Space for fixed navbar */
+}
+
+/* Base button and color definitions for the page (using your palette) */
+.btn-green {
+  background-color: #555755;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 25px;
+  color: #ECE3CE;
+  font-weight: 500;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.btn-green:hover {
+  background-color: #323232;
+}
+
+/* --- NAVBAR STYLES --- */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 95px;
+  width: 100%;
+  background-color: #C08261;
+  border-bottom: 2px solid rgba(0,0,0,0.1);
+  padding: 0 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0.1px 0.1px 50px rgba(0, 0, 0, 0.25);
+}
+
+.logo {
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.white {
+    color:#ECE3CE ;
+}
+
+.green {
+    color:#273826;
+    font-weight: 700;
+}
+
+.nav-items ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+}
+
+.nav-items a {
+  text-decoration: none;
+  color: #ECE3CE;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.nav-items a:hover {
+  color: #3a4d39;;
+  text-decoration: underline;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+/* FIX 4: Aligned Cart Icon */
+.cart {
+  position: relative;
+  font-size: 1.8rem; 
+  color: #ECE3CE;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.cart:hover {
+  color: #0d0d0d;
+}
+
+/* FIX 4: Better positioned Cart Count */
+#cart-count {
+  position: absolute;
+  top: -10px; 
+  right: -10px; 
+  background: #3b3c3b;
+  color: white;
+  font-size: 10px; 
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 3px 5px; 
+  line-height: 1; 
+  min-width: 18px; 
+  text-align: center;
+}
+
+/* --- PAGE-SPECIFIC LAYOUT STYLES --- */
+
+/* FIX 1: Search Bar alignment and spacing adjustments */
+.shop-search {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 30px 20px; 
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.shop-search input {
+  width: 60%;
+  padding: 10px 15px;
+  border: 1px solid #444644;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+}
+
+.shop-search button {
+  background-color: #444644;
+  color: #ECE3CE;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.shop-search button:hover {
+  background-color: #5d605d;
+}
+
+/* Q1/Q3 FIX: Sidebar Filters adjusted margins to fix misalignment */
+aside {
+  background-color: #f8f8f8 !important; 
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  height: fit-content;
+  /* FIX: Removed horizontal margins (0 15px 20px 15px) to keep the sidebar inside the column boundaries */
+  margin: 0 0 20px 0; 
+}
+
+aside h5 {
+  color: #3A4D39;
+  border-bottom: 2px solid #4F6F52;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+aside h6 {
+  color: #4F6F52;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+aside ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+aside ul li {
+  font-size: 0.95rem;
+  margin-bottom: 5px;
+}
+
+/* FIX 1: Product Cards layout context/alignment adjustments for the grid */
+main {
+    padding: 0; /* Removing padding to give max space for the grid */
+}
+
+main .card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+  overflow: hidden;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+main .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  height: 350px;
+  object-fit: cover;
+}
+
+.card-title {
+  color: #0b0b0b;
+  font-weight: 600;
+}
+
+.card-body {
+    flex-grow: 1; 
+}
+
+.card-footer {
+    padding-top: 10px;
+    background-color: white; 
+    border-top: none;
+}
+/* --- MODAL STYLES (Essential Base for Login/Seller Modals) --- */
+
+/* Common Modal Background Overlay */
+.login-modal, .modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(58, 77, 57, 0.8); /* Semi-transparent dark green */
+  display: none; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+/* Common Modal Card */
+.login-card, .modal-card {
+  background-color: #ECE3CE; /* Cream color */
+  padding: 30px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.login-card h3, .modal-card h2 {
+  color: #3A4D39; /* Dark green text */
+  margin-bottom: 20px;
+}
+
+/* Form Inputs */
+.login-card input,
+.modal-card input,
+.modal-card textarea {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  font-size: 1rem;
+  outline: none;
+}
+
+/* Login/Sign In/Log Out Buttons */
+.login-card button,
+.modal-card button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.login-card button:not(.close-btn),
+.modal-card button:not(.close-btn) {
+  background-color: #C08261; 
+  color: #ECE3CE;
+}
+
+.login-card button.close-btn {
+  background-color: #ccc;
+  color: black;
+}
+
+.login-card button:hover:not(.close-btn),
+.modal-card button:hover:not(.close-btn) {
+  background-color: #4F6F52;
+}
+
+.login-card .error,
+.modal-card .error {
+  color: red;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+/* footer */
+.site-footer {
+  background-color: #C08261; /* Terracotta background */
+  color: #ECE3CE;            /* Cream text */
+  padding: 40px 20px 20px;
+  margin-top: 50px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-section h3 {
+  color: #ECE3CE;
+  margin-bottom: 15px;
+}
+
+.footer-section p, 
+.footer-section a {
+  color: #ECE3CE;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+  color: #ffffff; /* White hover for links */
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  color: #ECE3CE;
+}
+
+.footer-section ul li a:hover {
+  color: #ffffff;
+}
+
+/* Newsletter Form */
+#newsletterForm {
+  display: flex;
+  flex-direction: column;
+}
+
+#newsletterForm input {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 25px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  outline: none;
+}
+
+/* Newsletter Button - Matches shop.css style */
+#newsletterForm button {
+  background-color: #ECE3CE;  /* Cream background */
+  color: #C08261;             /* Terracotta text */
+  border: 2px solid #FFFFFF;  /* White Border */
+  border-radius: 25px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+#newsletterForm button:hover {
+  background-color: #C08261;  /* Terracotta background */
+  color: #ECE3CE;             /* Cream text */
+  border: 2px solid #FFFFFF;
+}
+
+#newsletterMsg {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #ECE3CE;
+}
+
+/* Social icons */
+.social-links a {
+  font-size: 1.5rem;
+  margin-right: 15px;
+  color: #ECE3CE;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #ffffff;
+}
+
+/* Footer bottom */
+.footer-bottom {
+  border-top: 1px solid rgba(236, 227, 206, 0.3);
+  margin-top: 20px;
+  padding-top: 15px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+  /* === USER MENU STYLES === */
+.user-menu-wrap {
+  position: relative;
+  margin-left: 15px;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #ECE3CE; /* Cream */
+  color: #C08261;            /* Terracotta */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: 2px solid #ECE3CE;
+  transition: all 0.3s ease;
+}
+
+.user-avatar:hover {
+  background-color: #C08261;
+  color: #ECE3CE;
+  border-color: #ECE3CE;
+}
+
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  top: 55px;
+  right: 0;
+  width: 250px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+  border: 1px solid #ddd;
+  overflow: hidden;
+  z-index: 2000;
+}
+
+.profile-dropdown.active {
+  display: block;
+}
+
+.dropdown-header {
+  background-color: #C08261;
+  color: #ECE3CE;
+  padding: 15px;
+  text-align: center;
+}
+
+.dropdown-header p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.dropdown-header small {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  display: block;
+}
+
+.profile-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.profile-dropdown ul li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  color: #333;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+
+.profile-dropdown ul li a:hover {
+  background-color: #f9f9f9;
+  color: #C08261;
+}
+
+.profile-dropdown .divider {
+  height: 1px;
+  background-color: #eee;
+  margin: 4px 0;
+}
+/* === Seller Button === */
+.sell-btn button {
+  height: 40px;
+  width: 180px;
+  border-radius: 50px;
+  
+  /* 1. White Border & Cream Background */
+  border: 2px solid #ffffff; 
+  background-color: #ece3ce;
+  
+  color: #C08261; /* Terracotta Text */
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.sell-btn button:hover {
+  /* 2. Grey Background on Hover */
+  background-color: #C08261; 
+  color: #ffffff;            
+  border-color: #ffffff;
+}
