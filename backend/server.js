@@ -1,4 +1,4 @@
-require('dotenv').config({ path: '../.env' });
+require('dotenv').config();
 
 const path = require('path');
 const express = require('express');
@@ -36,7 +36,7 @@ if (!process.env.JWT_SECRET || process.env.JWT_SECRET === 'your_jwt_secret_here'
 }
 
 // --- MIDDLEWARE ---
-app.use(cors({ origin: process.env.CORS_ORIGIN || 'http://localhost:5000', credentials: true }));
+app.use(cors({ origin: "*"}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static('uploads'));
@@ -133,10 +133,10 @@ io.on('connection', (socket) => {
     });
 });
 
-app.use(express.static(FRONTEND_DIR));
-app.get('*', (req, res) => {
-    res.sendFile(path.join(FRONTEND_DIR, 'index.html'));
-});
+// app.use(express.static(FRONTEND_DIR));
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(FRONTEND_DIR, 'index.html'));
+// });
 
 server.listen(PORT, () => { // Use server.listen instead of app.listen
     console.log(`Server running on port ${PORT}`);
