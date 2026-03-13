@@ -17,7 +17,7 @@ function logoutReseller() {
 }
 
 const safeGetElement = (id) => document.getElementById(id);
-const BACKEND_URL = ''; // Add your backend URL here if needed
+const BACKEND_URL = 'https://hand-to-heart.onrender.com'; // Add your backend URL here if needed
 
 // *****************************************************************
 // 1. GLOBAL STATE AND CART FUNCTIONS
@@ -135,7 +135,7 @@ function renderCartPage() {
         return `
             <div class="cart-item" data-product-id="${item.productId}">
                 <div class="cart-item-details">
-                    <img src="${item.imageUrl || '../assets/default.jpg'}" alt="${item.title}" class="cart-item-image">
+                    <img src="${item.imageUrl ? BACKEND_URL + item.imageUrl : 'assets/default.jpg'}" alt="${item.title}" class="cart-item-image">
                     <p class="item-title">${item.title} <span style="font-size:0.8em; color:#666;">(₹${item.price.toFixed(2)} each)</span></p>
                 </div>
                 
@@ -335,7 +335,7 @@ function validateModalLogin() {
     errorMsg.textContent = 'Logging in...';
     errorMsg.style.color = 'orange';
     
-    fetch(BACKEND_URL + '/api/auth/login', {
+    fetch(BACKEND_URL+ '/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -348,7 +348,7 @@ function validateModalLogin() {
 
             localStorage.setItem('token', data.token);
             localStorage.setItem('user', JSON.stringify(data.user)); // Saves User Object
-            localStorage.setItem('user', JSON.stringify(data.user));
+            // localStorage.setItem('user', JSON.stringify(data.user));
             localStorage.removeItem('currentSellerId'); 
 
             closeLogin();
@@ -517,7 +517,7 @@ function handleSellerRegistration(e) {
     sellerMsg.style.color = "orange";
     sellerMsg.textContent = "Submitting application...";
 
-    fetch('/api/seller/register', {
+    fetch(BACKEND_URL + '/api/seller/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, phone, business, products, password })
@@ -787,7 +787,7 @@ function resellerLogin() {
         return;
     }
 
-    fetch('/api/auth/reseller-login', { 
+    fetch(BACKEND_URL + '/api/auth/reseller-login', { 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -856,7 +856,7 @@ async function resellerRegister() {
     }
 
     try {
-        const res = await fetch('/api/auth/reseller-register', {
+        const res = await fetch(BACKEND_URL + '/api/auth/reseller-register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, password: p1 })
@@ -1015,7 +1015,7 @@ function fetchOrderHistory() {
             <div class="order-items">
                 ${order.items.map(item => `
                     <div style="display:flex; align-items:center; gap:10px; margin-right:20px; margin-bottom: 10px;">
-                        <img src="${item.imageUrl || '../assets/default.jpg'}" class="order-item-thumb" style="width:60px; height:60px; object-fit:cover; border-radius:5px;">
+                        <img src="${item.imageUrl ? BACKEND_URL + item.imageUrl : 'assets/default.jpg'}" class="order-item-thumb" style="width:60px; height:60px; object-fit:cover; border-radius:5px;">
                         <div>
                             <p style="margin:0; font-weight:600; font-size: 0.9rem;">${item.title}</p>
                             <p style="margin:0; font-size:0.8rem; color:#777;">Qty: ${item.qty} x ₹${item.price}</p>
